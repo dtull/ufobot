@@ -22,10 +22,10 @@ def make_locator_map(starting_location, ending_location):
     return preq.url
 
 def make_story(user_location, ufo):
-    storytemplate = """On {date}, a {shape} shape UFO was seen near {place}. Here is where {user_location} is in relation to the UFO:
+    storytemplate = """On {date}, a {shape} shape UFO was seen near {place}. The report includes the following summary: {summary}. \n Here is where {user_location} is in relation to the UFO:
     {url}"""
 
     google_map_url = make_locator_map(user_location, ufo['location'])
-    story = storytemplate.format(date=ufo['date'], shape=ufo['shape'], place=ufo['location'], url=google_map_url, user_location=user_location)
+    story = storytemplate.format(date=ufo['date'], shape=ufo['shape'], place=ufo['location'], url=google_map_url, user_location=user_location, summary=ufo['summary'])
 
     print(story.strip())
